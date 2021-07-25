@@ -1,99 +1,170 @@
 * {
-  box-sizing: border-box;
-  margin: 0;
-}
+    box-sizing: border-box;
+    margin: 0;
+  }
 
 body {
   font-family: "Merriweather Sans", sans-serif;
-  color: #4c6986;
 }
 
-.wrapper {
-  max-width: 1440;
-  height: 800px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto;
+.title {
+  max-width: 500px;
 }
-
-h1{
-    font-size: 70px;
+  
+  h1 {
+    font-family: "Merriweather Sans", sans-serif;
     font-weight: bold;
-}
+    font-size: 70px;
+    color: #4c6986;
+  }
+  
+  p {
+    font-family: "Merriweather Sans", sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+    color: #4c6986;
+  }
+  
+  #app {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .wrapper {
+    max-width: 1440px;
+    height: 800px;
+    padding: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+  }
+  
+  .restart {
+    width: 175px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    border: 2px solid #4c6986;
+    margin-top: 30px;
+    transition: all 0.2s ease;
+    font-weight: bold;
+    color: #4c6986;
+    cursor: pointer;
+  }
 
-.restart {
-  width: 175px;
-  height: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50px;
-  border: 2px solid #4c6986;
-  transition: all 0.2s ease;
-  cursor: pointer;
-  font-weight: bold;
-  margin-top: 30px;
-}
+  .restart:hover {
+    background: #4c6986;
+    color: white;
+  }
+  
+  .game {
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    font-family: "Merriweather Sans", sans-serif;
+    width: 500px;
+    height: 500px;
+  }
+  
+  .header {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    color: #9A9A9A;
+  }
+  
+  .player-x {
+    flex: 1;
+    border-bottom: 5px solid #eee;
+    padding-bottom: 8px;
+    
+  }
 
-.restart:hover {
-  cursor: pointer;
-  color: white;
-  display: flex;
-  background-color: #4c6986;
-}
+  .player-x.active {
+    color: #42BED7;
+    border-color: #42BED7;
+  }
 
-.game {
-  display: flex;
-  flex-direction: column;
-  width: 500px;
-  height: 500px;
-}
+  .player-o.active {
+    color: #D7BAFB;
+    border-color: #D7BAFB;
+  }
 
-.header {
-  display: flex;
-  color: #9a9a9a;
-  font-size: 24px;
-}
+  .player-o {
+    flex: 1; 
+    border-bottom: 5px solid #eee;
+    padding-bottom: 8px;
+  }
+     
+  .header__status {
+    padding: 12px;
+    flex-grow: 1;
+    text-align: center;
+  }
+  
+  .header__restart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    outline: none;
+    background: none;
+    cursor: pointer;
+  }
+  
+  .board {
+    display: grid;
+    grid-gap: 0px;
+    padding: 10px;
+    flex-grow: 1;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+  }
+  
+  .board__tile {
+    background: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 80px;
+  }
 
-.header .player-x {
-  flex: 1;
-  border-bottom: 5px solid rgba(137, 163, 189, 0.58);
-  padding-bottom: 8px;
-}
+  .tile-x {
+    color: #42BED7;
+  }
 
-.header .player-o {
-  flex: 1;
-  border-bottom: 5px solid rgba(137, 163, 189, 0.58);
-  padding-bottom: 8px;
-}
+  .tile-o {
+    color: #D7BAFB
+  }
+  
+  .board__tile:not(:nth-child(3n)) {
+    border-right: 3px solid rgba(137, 163, 189, 0.58);
+  }
+  
+  .board__tile:not(:nth-last-child(-n + 3)) {
+    border-bottom: 3px solid rgba(137, 163, 189, 0.58);
+  }
+  .board__tile:hover {
+    background: #eeeeee;
+  }
+  
+  .board__tile--winner span {
+    color: #23CE6B !important;
+  }
+  
+  @media only screen and (max-width: 1200px) {
+    .wrapper {
+      flex-direction: column;
 
-.board {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1);
-  grid-gap: 0px;
-  flex-grow: 1;
-  padding: 10px;
-}
-
-.board-tile {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 80px;
-  background-color: white;
-  cursor: pointer;
-}
-
-.board-tile:not(:nth-child(3n)) {
-  border-right: 3px solid rgba(137, 163, 189, 0.58);
-}
-
-.board-tile:not(:nth-last-child(-n + 3)) {
-  border-bottom: 3px solid rgba(137, 163, 189, 0.58);
-}
-
-.board-tile:hover {
-  background: #eeeeee;
-}
+    }
+    .left {
+      margin-bottom: 50px;
+    }
+  }
